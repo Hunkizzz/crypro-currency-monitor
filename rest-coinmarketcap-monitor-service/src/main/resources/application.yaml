@@ -2,7 +2,7 @@ spring:
   application:
     name: coinmarketcap
   config:
-    import:  vault://
+    import: vault://
   cloud:
     vault:
       generic:
