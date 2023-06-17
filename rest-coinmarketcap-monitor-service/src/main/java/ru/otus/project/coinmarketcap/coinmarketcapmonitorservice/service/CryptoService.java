@@ -8,6 +8,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import ru.otus.project.coinmarketcap.coinmarketcapmonitorservice.dto.CryptoDto;
 import ru.otus.project.coinmarketcap.coinmarketcapmonitorservice.model.Crypto;
 import ru.otus.project.coinmarketcap.coinmarketcapmonitorservice.model.CryptoValue;
 import ru.otus.project.coinmarketcap.coinmarketcapmonitorservice.repository.CryptoRepository;
@@ -19,7 +20,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -99,5 +102,19 @@ public class CryptoService {
                 IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public List<CryptoDto> getCryptoCurrencies() {
+        List<CryptoDto> cryptoDtos = new ArrayList<>();
+        cryptoValueRepository.findAll().forEach(cryptoValue -> {
+            CryptoDto cryptoDto = CryptoDto.builder()
+                    .name(cryptoValue.getCrypto().getName())
+                    .price(cryptoValue.getPrice())
+//                    .symbol(cryptoValue.getCrypto().getSymbol())
+                    .insertDate(cryptoValue.getTimeStamp())
+                    .build();
+            cryptoDtos.add(cryptoDto);
+        });
+        return cryptoDtos;
     }
 }
