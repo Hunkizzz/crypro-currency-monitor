@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import ru.otus.project.coinmarketcap.coinmarketcapmonitorservice.service.CryptoService;
 
 @Service
-@FieldDefaults(level = AccessLevel.PRIVATE)
+@FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 @RequiredArgsConstructor
 public class CryptoUpdate {
     CryptoService cryptoService;
