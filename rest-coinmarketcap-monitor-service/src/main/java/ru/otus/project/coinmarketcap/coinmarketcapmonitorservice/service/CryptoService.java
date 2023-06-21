@@ -8,9 +8,9 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import ru.otus.project.coinmarketcap.coinmarketcapmonitorservice.domain.Crypto;
+import ru.otus.project.coinmarketcap.coinmarketcapmonitorservice.domain.CryptoValue;
 import ru.otus.project.coinmarketcap.coinmarketcapmonitorservice.dto.CryptoDto;
-import ru.otus.project.coinmarketcap.coinmarketcapmonitorservice.model.Crypto;
-import ru.otus.project.coinmarketcap.coinmarketcapmonitorservice.model.CryptoValue;
 import ru.otus.project.coinmarketcap.coinmarketcapmonitorservice.repository.CryptoRepository;
 import ru.otus.project.coinmarketcap.coinmarketcapmonitorservice.repository.CryptoValueRepository;
 
@@ -77,7 +77,7 @@ public class CryptoService {
 
             JSONObject json = new JSONObject(sb.toString());
             JSONArray jsonArray = json.getJSONArray(DATA);
-
+            LocalDateTime dateTime = LocalDateTime.now();
             for (int i = 0, size = jsonArray.length(); i < size; i++) {
                 JSONObject objectInArray = jsonArray.getJSONObject(i);
                 JSONObject jsonQuote = objectInArray.getJSONObject(QUOTE);
@@ -93,7 +93,7 @@ public class CryptoService {
                 }
                 CryptoValue cryptoValue = new CryptoValue();
                 cryptoValue.setCrypto(savedCrypto.get(symbol));
-                cryptoValue.setTimeStamp(LocalDateTime.now());
+                cryptoValue.setTimestamp(dateTime);
                 cryptoValue.setPrice(jsonUsd.getBigDecimal(PRICE));
                 cryptoValueRepository.save(cryptoValue);
             }
@@ -110,8 +110,33 @@ public class CryptoService {
             CryptoDto cryptoDto = CryptoDto.builder()
                     .name(cryptoValue.getCrypto().getName())
                     .price(cryptoValue.getPrice())
-//                    .symbol(cryptoValue.getCrypto().getSymbol())
-                    .insertDate(cryptoValue.getTimeStamp())
+                    .insertDate(cryptoValue.getTimestamp())
+                    .build();
+            cryptoDtos.add(cryptoDto);
+        });
+        return cryptoDtos;
+    }
+
+    public List<CryptoDto> getLastCryptoCurrencies() {
+        List<CryptoDto> cryptoDtos = new ArrayList<>();
+        cryptoValueRepository.findLastCurrencies().forEach(cryptoValue -> {
+            CryptoDto cryptoDto = CryptoDto.builder()
+                    .name(cryptoValue.getName())
+                    .price(cryptoValue.getPrice())
+                    .insertDate(cryptoValue.getTimestamp())
+                    .build();
+            cryptoDtos.add(cryptoDto);
+        });
+        return cryptoDtos;
+    }
+
+    public List<CryptoDto> getCryptoCurrenciesByName(String name) {
+        List<CryptoDto> cryptoDtos = new ArrayList<>();
+        cryptoValueRepository.findAllByName(name).forEach(cryptoValue -> {
+            CryptoDto cryptoDto = CryptoDto.builder()
+                    .name(cryptoValue.getName())
+                    .price(cryptoValue.getPrice())
+                    .insertDate(cryptoValue.getTimestamp())
                     .build();
             cryptoDtos.add(cryptoDto);
         });

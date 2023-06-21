@@ -1,4 +1,4 @@
-package ru.otus.project.coinmarketcap.coinmarketcapmonitorservice.model;
+package ru.otus.project.coinmarketcap.coinmarketcapmonitorservice.domain;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -40,7 +40,7 @@ public class CryptoValue {
     Crypto crypto;
 
     @Column(name = "timestamp")
-    LocalDateTime timeStamp;
+    LocalDateTime timestamp;
 
     @Column(name = "price")
     BigDecimal price;

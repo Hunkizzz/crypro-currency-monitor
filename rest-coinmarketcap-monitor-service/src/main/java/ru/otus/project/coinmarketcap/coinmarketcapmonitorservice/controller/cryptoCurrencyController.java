@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,6 +33,14 @@ public class cryptoCurrencyController {
     @GetMapping("/crypto")
     public List<CryptoDto> getCurrencies() {
         return cryptoService.getCryptoCurrencies();
+    }
+    @GetMapping("/current_crypto_currency")
+    public List<CryptoDto> getLastCurrencies() {
+        return cryptoService.getLastCryptoCurrencies();
+    }
+    @GetMapping("/crypto/{name}")
+    public List<CryptoDto> getCryptoCurrenciesByName(@PathVariable String name) {
+        return cryptoService.getCryptoCurrenciesByName(name);
     }
 
 }

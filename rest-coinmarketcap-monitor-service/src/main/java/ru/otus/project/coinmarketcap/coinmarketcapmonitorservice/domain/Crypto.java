@@ -1,4 +1,4 @@
-package ru.otus.project.coinmarketcap.coinmarketcapmonitorservice.model;
+package ru.otus.project.coinmarketcap.coinmarketcapmonitorservice.domain;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

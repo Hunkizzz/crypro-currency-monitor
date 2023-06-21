@@ -1,7 +1,7 @@
 package ru.otus.project.coinmarketcap.coinmarketcapmonitorservice.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import ru.otus.project.coinmarketcap.coinmarketcapmonitorservice.model.Crypto;
+import ru.otus.project.coinmarketcap.coinmarketcapmonitorservice.domain.Crypto;
 
 import java.util.UUID;
 
