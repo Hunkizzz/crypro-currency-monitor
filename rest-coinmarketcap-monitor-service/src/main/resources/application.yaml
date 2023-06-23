@@ -33,5 +33,10 @@ server:
     context-path: /${spring.application.name}
 
 coinmarketcap:
+  api:
+    host:
+      baseurl: https://pro-api.coinmarketcap.com/v1/cryptocurrency/
+  url:
+    listings: listings/latest?CMC_PRO_API_KEY={token}
   token: ${coinmarketcap.token}
 

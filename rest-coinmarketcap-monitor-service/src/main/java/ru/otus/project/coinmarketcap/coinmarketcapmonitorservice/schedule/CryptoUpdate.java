@@ -12,7 +12,8 @@ import ru.otus.project.coinmarketcap.coinmarketcapmonitorservice.service.CryptoS
 @RequiredArgsConstructor
 public class CryptoUpdate {
     CryptoService cryptoService;
-    @Scheduled(fixedDelay = 1000 * 60 * 15)
+
+    @Scheduled(fixedDelay = 1000 * 60 * 30)
     public void scheduleUpdateCryptoCurrency() {
         cryptoService.saveCryptoCurrency();
     }
