@@ -12,11 +12,16 @@ import java.time.LocalDateTime;
 
 @Data
 @Builder
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @AllArgsConstructor
 @NoArgsConstructor
-@FieldDefaults(level = AccessLevel.PRIVATE)
 public class CryptoInfo {
     String name;
     BigDecimal price;
     LocalDateTime timestamp;
+
+    public CryptoInfo(String name, BigDecimal price) {
+        this.name = name;
+        this.price = price;
+    }
 }

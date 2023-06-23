@@ -1,6 +1,5 @@
 package ru.otus.project.coinmarketcap.coinmarketcapmonitorservice.util;
 
-import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
@@ -13,6 +12,5 @@ public final class Constant {
     public static String USD = "USD";
     public static String SLUG = "slug";
     public static String PRICE = "price";
-
     public static String TOKEN = "token";
 }

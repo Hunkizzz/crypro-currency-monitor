@@ -16,4 +16,6 @@ public class ConnectionProperties {
     @Value("${coinmarketcap.url.listings}")
     String listingsUrl;
 
+    @Value("${coinmarketcap.url.quotes}")
+    String quotesUrl;
 }

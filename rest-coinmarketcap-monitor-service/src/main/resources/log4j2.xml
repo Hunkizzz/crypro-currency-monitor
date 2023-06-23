@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Properties>
+        <Property name="DEFAULT_PATTERN">
+            %d{ISO8601} [%-5level] [${spring:spring.application.name}] %logger{1.} %method - [%msg]%n
+        </Property>
+        <Property name="COLOURFUL_DEFAULT_PATTERN">
+            %d{ISO8601} %highlight{[%-5level]} [$${spring:spring.application.name}] %highlight{%logger{1.}} %style{%method}{magenta} - [%style{%msg}{cyan}]%n
+        </Property>
+    </Properties>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout disableAnsi="false" pattern="${COLOURFUL_DEFAULT_PATTERN}"/>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Root level = "info">
+            <AppenderRef ref="Console" level="info"/>
+        </Root>
+        <Logger name="ru.otus.project.coinmarketcap.coinmarketcapmonitorservice" level="debug" additivity="false">
+            <AppenderRef ref="Console" level="debug"/>
+        </Logger>
+    </Loggers>
+</Configuration>

@@ -11,37 +11,37 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.otus.project.coinmarketcap.coinmarketcapmonitorservice.dto.CryptoDto;
-import ru.otus.project.coinmarketcap.coinmarketcapmonitorservice.service.CryptoService;
+import ru.otus.project.coinmarketcap.coinmarketcapmonitorservice.service.HistoryCryptoService;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/history")
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 @RequiredArgsConstructor
 @CrossOrigin("*")
-public class cryptoCurrencyController {
-    CryptoService cryptoService;
+public class HistoryCryptoCurrencyController {
+    HistoryCryptoService historyCryptoService;
 
     @GetMapping("/")
-    public ResponseEntity<?> createComment() {
-        cryptoService.saveCryptoCurrency();
+    public ResponseEntity<?> saveCryptoCurrency() {
+        historyCryptoService.saveCryptoCurrency();
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @GetMapping("/crypto")
     public List<CryptoDto> getCurrencies() {
-        return cryptoService.getCryptoCurrencies();
+        return historyCryptoService.getCryptoCurrencies();
     }
 
-    @GetMapping("/current_crypto_currency")
+    @GetMapping("/crypto_currency")
     public List<CryptoDto> getLastCurrencies() {
-        return cryptoService.getLastCryptoCurrencies();
+        return historyCryptoService.getLastCryptoCurrencies();
     }
 
     @GetMapping("/crypto/{name}")
-    public List<CryptoDto> getCryptoCurrenciesByName(@PathVariable String name) {
-        return cryptoService.getCryptoCurrenciesByName(name);
+    public List<CryptoDto> getHistoryCryptoCurrenciesByName(@PathVariable String name) {
+        return historyCryptoService.getHistoryCryptoCurrenciesByName(name);
     }
 
 }
