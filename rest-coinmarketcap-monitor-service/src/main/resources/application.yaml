@@ -14,6 +14,12 @@ spring:
       scheme: http
       kv:
         enabled: true
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/SpringCryptoKeycloak
+          jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
   datasource:
     url: ${db.url}
     username: ${db.username}
@@ -36,6 +42,13 @@ spring:
     show-sql: true
   liquibase:
     change-log: classpath:db.changelog/db.changelog-master.xml
+
+jwt:
+  auth:
+    converter:
+      resource-id: springboot-keycloak-client
+      principal-attribute: preferred_username
+
 
 server:
   port: 8095
