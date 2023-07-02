@@ -18,7 +18,7 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:8080/realms/SpringCryptoKeycloak
+          issuer-uri: https://localhost:8081/realms/SpringCryptoKeycloak
           jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
   datasource:
     url: ${db.url}
@@ -39,7 +39,7 @@ spring:
     generate-ddl: false
     hibernate:
       ddl-auto: none
-    show-sql: true
+    show-sql: false
   liquibase:
     change-log: classpath:db.changelog/db.changelog-master.xml
 
@@ -55,6 +55,11 @@ server:
   servlet:
     context-path: /${spring.application.name}
 
+app:
+  cors:
+    allowed-origins: http://localhost:3000
+
+
 coinmarketcap:
   api:
     host:
@@ -63,4 +68,3 @@ coinmarketcap:
     listings: listings/latest?CMC_PRO_API_KEY={token}
     quotes: quotes/latest?CMC_PRO_API_KEY={token}&symbol={symbol}&convert=USD
   token: ${coinmarketcap.token}
-
