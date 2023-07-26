@@ -1,24 +1,25 @@
 spring:
   application:
-    name: coinmarketcap
+    name: finance
   config:
     import: vault://
   cloud:
     vault:
-      generic:
-        enabled: true
-        default-context: credentials
-        backend: coinmarketcap
       uri: http://127.0.0.1:8200
       token: ${vault.token}
       scheme: http
       kv:
+        backend-version: 2
         enabled: true
+        backend: kv
+        application-name: finance/db,finance/coinmarketcap,finance/fixer
+        profile-separator: '/'
+        default-context: finance/db
   security:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: https://localhost:8081/realms/SpringCryptoKeycloak
+          issuer-uri: https://66fd-45-159-74-79.ngrok-free.app/realms/SpringCryptoKeycloak
           jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
   datasource:
     url: ${db.url}
@@ -57,7 +58,7 @@ server:
 
 app:
   cors:
-    allowed-origins: http://localhost:3000
+    allowed-origins: http://localhost:3000, https://66fd-45-159-74-79.ngrok-free.app
 
 
 coinmarketcap:
@@ -68,3 +69,11 @@ coinmarketcap:
     listings: listings/latest?CMC_PRO_API_KEY={token}
     quotes: quotes/latest?CMC_PRO_API_KEY={token}&symbol={symbol}&convert=USD
   token: ${coinmarketcap.token}
+
+fixer:
+  api:
+    host:
+      baseurl: http://data.fixer.io/api/
+  url:
+    latest-currencies: latest?access_key={token}&base=USD
+  token: ${fixer.token}
