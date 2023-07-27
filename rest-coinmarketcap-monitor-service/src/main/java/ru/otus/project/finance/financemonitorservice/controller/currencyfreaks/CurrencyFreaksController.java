@@ -1,4 +1,4 @@
-package ru.otus.project.finance.financemonitorservice.controller.fixer;
+package ru.otus.project.finance.financemonitorservice.controller.currencyfreaks;
 
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +14,7 @@ import ru.otus.project.finance.financemonitorservice.service.fixer.CurrencyServi
 @RequestMapping("/api")
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 @RequiredArgsConstructor
-public class FixerController {
+public class CurrencyFreaksController {
     CurrencyService currencyService;
 
     @GetMapping("/currency")

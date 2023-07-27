@@ -1,0 +1,3 @@
+
+CREATE TABLE SP500 (id UUID DEFAULT gen_random_uuid() NOT NULL,symbol VARCHAR(255), name VARCHAR(255), sector VARCHAR(255), CONSTRAINT "SpPK" PRIMARY KEY (id));
+

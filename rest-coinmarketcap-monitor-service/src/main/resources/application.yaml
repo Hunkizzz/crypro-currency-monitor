@@ -12,7 +12,7 @@ spring:
         backend-version: 2
         enabled: true
         backend: kv
-        application-name: finance/db,finance/coinmarketcap,finance/fixer
+        application-name: finance/db,finance/coinmarketcap,finance/fixer, finance/polygon
         profile-separator: '/'
         default-context: finance/db
   security:
@@ -75,5 +75,22 @@ fixer:
     host:
       baseurl: http://data.fixer.io/api/
   url:
-    latest-currencies: latest?access_key={token}&base=USD
+    latest-currencies: latest?access_key={token}
   token: ${fixer.token}
+
+polygon:
+  api:
+    host:
+      baseurl:  https://api.polygon.io/v2/
+  url:
+    get-on-date:  locale/us/market/stocks/{date}?adjusted=true&apikey={token}
+  token: ${polygon.token}
+
+currency-freaks:
+  api:
+    host:
+      baseurl:  https://api.polygon.io/v2/
+  url:
+    get-on-date:  locale/us/market/stocks/{date}?adjusted=true&apikey={token}
+  token: ${polygon.token}
+

@@ -14,7 +14,6 @@ import ru.otus.project.finance.financemonitorservice.service.coimarketcap.Crypto
 @RequestMapping("/api")
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 @RequiredArgsConstructor
-//@CrossOrigin("*")
 public class CryptoCurrencyController {
     CryptoService cryptoService;
 

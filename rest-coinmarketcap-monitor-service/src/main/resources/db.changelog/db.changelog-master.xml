@@ -3,7 +3,11 @@
                    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
-    <include file="db.changelog/sql/init.sql"/>
-    <include file="db.changelog/sql/CREATE_TABLE_CURRENCY.sql"/>
-    <include file="db.changelog/sql/FILL_CURRENCY_TABLE.sql"/>
+    <include file="db.changelog/sql/1_init.sql"/>
+    <include file="db.changelog/sql/2_CREATE_TABLE_CURRENCY.sql"/>
+    <include file="db.changelog/sql/3_FILL_CURRENCY_TABLE.sql"/>
+    <include file="db.changelog/sql/4_CREATE_TABLE_SP500.sql"/>
+    <include file="db.changelog/sql/5_FILL_SP500_TABLE.sql"/>
+    <include file="db.changelog/sql/6_CREATE_TABLE_NASDAQ.sql"/>
+    <include file="db.changelog/sql/7_FILL_NASDAQ_TABLE.sql"/>
 </databaseChangeLog>

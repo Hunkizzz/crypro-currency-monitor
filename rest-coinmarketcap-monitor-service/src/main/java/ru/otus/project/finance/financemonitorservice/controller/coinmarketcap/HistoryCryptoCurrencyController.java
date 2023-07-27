@@ -18,7 +18,6 @@ import java.util.List;
 @RequestMapping("/api/history")
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 @RequiredArgsConstructor
-//@CrossOrigin("*")
 public class HistoryCryptoCurrencyController {
     HistoryCryptoService historyCryptoService;
 
