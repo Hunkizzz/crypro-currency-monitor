@@ -11,7 +11,7 @@ import ru.otus.project.finance.financemonitorservice.dto.CurrencyDto;
 import ru.otus.project.finance.financemonitorservice.service.fixer.CurrencyService;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/currency-freaks/")
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 @RequiredArgsConstructor
 public class CurrencyFreaksController {

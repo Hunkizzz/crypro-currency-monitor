@@ -10,4 +10,5 @@
     <include file="db.changelog/sql/5_FILL_SP500_TABLE.sql"/>
     <include file="db.changelog/sql/6_CREATE_TABLE_NASDAQ.sql"/>
     <include file="db.changelog/sql/7_FILL_NASDAQ_TABLE.sql"/>
+    <include file="db.changelog/sql/8_CREATE_STOCK_DATA_TABLE.sql"/>
 </databaseChangeLog>

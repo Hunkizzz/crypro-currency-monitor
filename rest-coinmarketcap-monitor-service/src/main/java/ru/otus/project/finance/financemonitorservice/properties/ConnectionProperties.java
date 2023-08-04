@@ -24,4 +24,10 @@ public class ConnectionProperties {
 
     @Value("${fixer.url.latest-currencies}")
     String latestCurrenciesUrl;
+
+    @Value("${polygon.token}")
+    String polygonToken;
+
+    @Value("${polygon.url.get-on-date}")
+    String getPolygonOnDateUrl;
 }

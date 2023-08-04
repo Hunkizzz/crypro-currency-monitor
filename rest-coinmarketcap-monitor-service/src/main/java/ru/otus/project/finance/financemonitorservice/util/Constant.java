@@ -13,4 +13,7 @@ public final class Constant {
     public static String SLUG = "slug";
     public static String PRICE = "price";
     public static String TOKEN = "token";
+    public static String RESULTS = "results";
+
+    public static String DATE = "date";
 }

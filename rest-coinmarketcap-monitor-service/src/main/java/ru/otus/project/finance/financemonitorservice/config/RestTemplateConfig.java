@@ -15,11 +15,13 @@ import org.springframework.web.util.DefaultUriBuilderFactory;
 
 @Configuration
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class restTemplateConfig {
+public class RestTemplateConfig {
     @Value("${coinmarketcap.api.host.baseurl}")
     String coinMarketCapApiHost;
     @Value("${fixer.api.host.baseurl}")
     String fixerApiHost;
+    @Value("${polygon.api.host.baseurl}")
+    String polygonApiHost;
 
     @Bean("coinMarketCapRestTemplate")
     public RestTemplate coinMarketCapRestTemplate() {
@@ -32,6 +34,13 @@ public class restTemplateConfig {
     public RestTemplate fixerRestTemplate() {
         RestTemplate restTemplate = new RestTemplate(clientHttpRequestFactory());
         restTemplate.setUriTemplateHandler(new DefaultUriBuilderFactory(fixerApiHost));
+        return restTemplate;
+    }
+
+    @Bean("polygonRestTemplate")
+    public RestTemplate polygonRestTemplate() {
+        RestTemplate restTemplate = new RestTemplate(clientHttpRequestFactory());
+        restTemplate.setUriTemplateHandler(new DefaultUriBuilderFactory(polygonApiHost));
         return restTemplate;
     }
 

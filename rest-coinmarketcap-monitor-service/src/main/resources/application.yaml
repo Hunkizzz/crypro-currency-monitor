@@ -12,14 +12,14 @@ spring:
         backend-version: 2
         enabled: true
         backend: kv
-        application-name: finance/db,finance/coinmarketcap,finance/fixer, finance/polygon
+        application-name: finance/db,finance/coinmarketcap,finance/fixer,finance/polygon
         profile-separator: '/'
         default-context: finance/db
   security:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: https://66fd-45-159-74-79.ngrok-free.app/realms/SpringCryptoKeycloak
+          issuer-uri: https://9242-45-159-74-79.ngrok-free.app/realms/SpringCryptoKeycloak
           jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
   datasource:
     url: ${db.url}
@@ -50,6 +50,9 @@ jwt:
       resource-id: springboot-keycloak-client
       principal-attribute: preferred_username
 
+logging:
+  level:
+    root: INFO
 
 server:
   port: 8095
@@ -58,7 +61,7 @@ server:
 
 app:
   cors:
-    allowed-origins: http://localhost:3000, https://66fd-45-159-74-79.ngrok-free.app
+    allowed-origins: http://localhost:3000, https://9242-45-159-74-79.ngrok-free.app
 
 
 coinmarketcap:
@@ -81,16 +84,16 @@ fixer:
 polygon:
   api:
     host:
-      baseurl:  https://api.polygon.io/v2/
+      baseurl: https://api.polygon.io/v2/
   url:
-    get-on-date:  locale/us/market/stocks/{date}?adjusted=true&apikey={token}
+    get-on-date: aggs/grouped/locale/us/market/stocks/{date}?adjusted=true&apikey={token}
   token: ${polygon.token}
 
-currency-freaks:
-  api:
-    host:
-      baseurl:  https://api.polygon.io/v2/
-  url:
-    get-on-date:  locale/us/market/stocks/{date}?adjusted=true&apikey={token}
-  token: ${polygon.token}
+#currency-freaks:
+#  api:
+#    host:
+#      baseurl:  https://api.polygon.io/v2/
+#  url:
+#    get-on-date:  locale/us/market/stocks/{date}?adjusted=true&apikey={token}
+#  token: ${polygon.token}
 

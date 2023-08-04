@@ -14,8 +14,8 @@
         </Console>
     </Appenders>
     <Loggers>
-        <Root level = "info">
-            <AppenderRef ref="Console" level="info"/>
+        <Root level = "debug">
+            <AppenderRef ref="Console" level="debug"/>
         </Root>
         <Logger name="ru.otus.project.coinmarketcap.coinmarketcapmonitorservice" level="debug" additivity="false">
             <AppenderRef ref="Console" level="debug"/>
